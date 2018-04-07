@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "browser-detect": "^0.2.26",
     "express": "^4.16.3",
+    "ignore-styles": "^5.0.1",
     "react": "^16.3.1",
     "react-device-detect": "^1.0.1",
     "react-dom": "^16.3.1",
@@ -22,7 +24,8 @@
     "build-css:web": "node-sass --output-style compressed --source-map true --include-path sass sass/web-style.scss public/css/web-style.css",
     "watch-css:web": "nodemon -e scss -x \"npm run build-css:web\"",
     "build-css:mobile": "node-sass --output-style compressed --source-map true --include-path sass sass/mobile-style.scss public/css/mobile-style.css",
-    "watch-css:mobile": "nodemon -e scss -x \"npm run build-css:mobile\""
+    "watch-css:mobile": "nodemon -e scss -x \"npm run build-css:mobile\"",
+    "scripts:copy-css": "./scripts/copy-css.sh"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

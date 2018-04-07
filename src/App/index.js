@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { isMobile } from 'react-device-detect';
 
 import Loadable from 'shared/Loadable'
+
+if (isMobile) {
+  import('./mobile-style.css')
+} else {
+  import('./web-style.css')
+}
 
 const Home = Loadable({
   location: 'Home'

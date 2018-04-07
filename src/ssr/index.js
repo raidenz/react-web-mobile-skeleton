@@ -1,9 +1,12 @@
+import 'ignore-styles';
 import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import reactLoadable from 'react-loadable';
 import { Helmet } from 'react-helmet';
+import browser from 'browser-detect';
+
 
 import path from 'path';
 import fs from 'fs';
@@ -19,6 +22,15 @@ app.use('/static', express.static(path.resolve(__dirname, '../..', 'build/static
 app.use('/public', express.static(path.resolve(__dirname, '../..', 'public')));
 
 app.get('/', (req, res) => {
+  const browserVal = browser(req.headers['user-agent']);
+  console.log(browserVal);
+  let importStyle;
+  if (browserVal.mobile) {
+    importStyle = 'mobile-style.css'
+  } else {
+    importStyle = 'web-style.css'
+  }
+
   const filePath = path.resolve(__dirname, '../..', 'build', 'asset-manifest.json');
   const helmet = Helmet.renderStatic();
 
@@ -44,6 +56,7 @@ app.get('/', (req, res) => {
   <head>
     ${helmet.title && helmet.title.toString()}
     ${helmet.meta && helmet.meta.toString()}
+    <link rel="stylesheet" href="public/css/${importStyle}"/>
   </head>
   <body>
     <div id="root">${ReactApp}</div>
@@ -58,3 +71,8 @@ reactLoadable.preloadAll().then(() => {
     console.log(`Running on http://localhost:${PORT}/`);
   });
 });
+
+/**
+ * TODO
+ * Import style manualy by device
+ */
