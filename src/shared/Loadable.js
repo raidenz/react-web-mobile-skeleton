@@ -12,12 +12,13 @@ const Loadable = (props) => {
       loader: () => import(`mobile/${location}`),
       ...rest
     })
+  } else {
+    return reactLoadable({
+      loading: Loading,
+      loader: () => import(`web/${location}`),
+      ...rest
+    })
   }
-  return reactLoadable({
-    loading: Loading,
-    loader: () => import(`web/${location}`),
-    ...rest
-  })
 }
 
 export default Loadable

@@ -24,5 +24,5 @@ const RenderContent = () => {
 ReactDOM.render((
   <BrowserRouter>
     <RenderContent />
-  </BrowserRouter>  
+  </BrowserRouter>
 ),document.getElementById('root'));
