@@ -18,7 +18,11 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "start:server": "NODE_ENV=development NODE_PATH=src nodemon src/ssr --exec babel-node",
-    "start:server2": "NODE_ENV=development nodemon --watch src/ssr --ext js,pug,css src/ssr/index.js "
+    "start:server2": "NODE_ENV=development nodemon --watch src/ssr --ext js,pug,css src/ssr/index.js ",
+    "build-css:web": "node-sass --output-style compressed --source-map true --include-path sass sass/web-style.scss public/css/web-style.css",
+    "watch-css:web": "nodemon -e scss -x \"npm run build-css:web\"",
+    "build-css:mobile": "node-sass --output-style compressed --source-map true --include-path sass sass/mobile-style.scss public/css/mobile-style.css",
+    "watch-css:mobile": "nodemon -e scss -x \"npm run build-css:mobile\""
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -26,6 +30,7 @@
     "babel-plugin-async-import": "^1.0.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-2": "^6.24.1"
+    "babel-preset-stage-2": "^6.24.1",
+    "node-sass": "^4.8.3"
   }
 }
