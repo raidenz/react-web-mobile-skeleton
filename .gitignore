@@ -9,6 +9,7 @@
 
 # build
 /public/css/
+/src/App/*.css
 
 # production
 /build
