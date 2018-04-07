@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "browser-detect": "^0.2.26",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "ignore-styles": "^5.0.1",
     "react": "^16.3.1",

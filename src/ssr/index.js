@@ -1,3 +1,4 @@
+require('dotenv').config();
 import 'ignore-styles';
 import express from 'express';
 import React from 'react';
@@ -13,7 +14,7 @@ import fs from 'fs';
 
 import App from 'App';
 
-const PORT = '8080'
+// const PORT = '8080'
 
 const app = express();
 const context = {};
@@ -23,7 +24,6 @@ app.use('/public', express.static(path.resolve(__dirname, '../..', 'public')));
 
 app.get('/', (req, res) => {
   const browserVal = browser(req.headers['user-agent']);
-  console.log(browserVal);
   let importStyle;
   if (browserVal.mobile) {
     importStyle = 'mobile-style.css'
@@ -67,12 +67,8 @@ app.get('/', (req, res) => {
 });
 
 reactLoadable.preloadAll().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Running on http://localhost:${PORT}/`);
+  app.listen(process.env.REACT_APP_SERVER_PORT, () => {
+    console.log(`Running on http://localhost:${process.env.REACT_APP_SERVER_PORT}/`);
   });
 });
 
-/**
- * TODO
- * Import style manualy by device
- */
