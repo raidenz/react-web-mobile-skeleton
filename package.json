@@ -20,13 +20,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "start:development": "react-scripts start && npm run watch-css:mobile && npm run watch-css:web && npm run watch-css:web",
+    "start:dev": "react-scripts start & npm run css:watch",
     "start:server": "NODE_ENV=development NODE_PATH=src nodemon src/ssr --exec babel-node",
-    "start:server2": "NODE_ENV=development nodemon --watch src/ssr --ext js,pug,css src/ssr/index.js ",
-    "build-css:web": "node-sass --output-style compressed --source-map true --include-path sass sass/web-style.scss public/css/web-style.css && npm run scripts:copy-css",
-    "watch-css:web": "nodemon -e scss -x \"npm run build-css:web\"",
-    "build-css:mobile": "node-sass --output-style compressed --source-map true --include-path sass sass/mobile-style.scss public/css/mobile-style.css && npm run scripts:copy-css",
-    "watch-css:mobile": "nodemon -e scss -x \"npm run build-css:mobile\"",
+    "css:watch": "nodemon -e scss -x \"npm run css:build\"",
+    "css:build": "node-sass --output-style compressed --source-map true  sass/ -o public/css/",
+    "css:copydev": "nodemon -e css -x \"npm run scripts:copy-css\"",
     "scripts:copy-css": "./scripts/copy-css.sh"
   },
   "devDependencies": {

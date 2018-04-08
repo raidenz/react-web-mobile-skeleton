@@ -15,10 +15,12 @@ REACT_APP_SERVER_PORT=8080
 
 ## RUN
 ```sh
-yarn start
-yarn watch-css:mobile
-yarn watch-css:web
+yarn start:dev
+
+# manualy do this after change the sass directory
 yarn scripts/copy-css
+# or use this
+yarn css:copydev
 ```
 
 for server
