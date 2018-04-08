@@ -1,5 +1,5 @@
-# code spliting with CRA
-How if we can split our code, so we can component for mobile and desktop app, with smaller code?
+# React Web Mobile Skeleton
+How if we can split our code, so we can create component for mobile and desktop app, with smaller code?
 
 this is just experiment
 
@@ -76,3 +76,6 @@ please dont be confuse with the Capital Folder, the Capital folder mean its a co
   -> reducer function
   index.js
 ```
+
+## Todo
+- cuncurent the npm script
