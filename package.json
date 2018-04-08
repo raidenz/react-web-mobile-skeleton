@@ -25,7 +25,7 @@
     "css:watch": "nodemon -e scss -x \"npm run css:build\"",
     "css:build": "node-sass --output-style compressed --source-map true  sass/ -o public/css/",
     "css:copydev": "nodemon -e css -x \"npm run scripts:copy-css\"",
-    "build:server": "babel src --out-dir build-server --copy-files",
+    "build:server": "babel src --out-dir build-server --copy-files --minified",
     "run:server": "NODE_PATH=build-server node server.js",
     "scripts:copy-css": "./scripts/copy-css.sh"
   },
