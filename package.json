@@ -25,12 +25,15 @@
     "css:watch": "nodemon -e scss -x \"npm run css:build\"",
     "css:build": "node-sass --output-style compressed --source-map true  sass/ -o public/css/",
     "css:copydev": "nodemon -e css -x \"npm run scripts:copy-css\"",
+    "build:server": "babel src --out-dir build-server --copy-files",
+    "run:server": "NODE_PATH=build-server node server.js",
     "scripts:copy-css": "./scripts/copy-css.sh"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-async-import": "^1.0.0",
+    "babel-plugin-css-modules-transform": "^1.5.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",

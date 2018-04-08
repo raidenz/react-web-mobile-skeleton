@@ -23,5 +23,14 @@
     "async-import"
   ],
   "comments": false,
-  "compact": false
+  "compact": false,
+  "env": {
+    "development": {},
+    "production": {},
+    "lib": {
+      "plugins": [
+        "css-modules-transform"
+      ]
+    }
+  }
 }

@@ -25,8 +25,15 @@ yarn css:copydev
 
 for server
 ```sh
+#for development use
 yarn build
 yarn start:server
+
+# for production
+# dont run babel-node directly on production
+# it will eat your memory, use this for production
+yarn build:server
+yarn run:server
 ```
 
 ## Concept
