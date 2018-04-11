@@ -28,7 +28,11 @@ export default (req, res) => {
       return res.status(404).end()
     }
     const assets = JSON.parse(jsonData)
-    const { 'main.css': maincss, 'main.js': mainjs } = assets;
+    // loop the chunk
+    const chunkScripts = Object.keys(assets).filter(asset => asset.endsWith('.js'));
+    const loopScript = ReactDOMServer.renderToString(chunkScripts.map(chunk => (
+      <script src={chunk}></script>
+    )))
 
     const ReactApp = ReactDOMServer.renderToString(
       <StaticRouter
@@ -43,11 +47,12 @@ export default (req, res) => {
   <head>
     ${helmet.title && helmet.title.toString()}
     ${helmet.meta && helmet.meta.toString()}
+    <link rel="manifest" href="public/manifest.json" />
     <link rel="stylesheet" href="public/css/${importStyle}"/>
   </head>
   <body>
     <div id="root">${ReactApp}</div>
-    <script src="${mainjs}"></script>
+    ${loopScript}
   </body>
 </html>`);
   });
